@@ -18,5 +18,14 @@ app.use(express.urlencoded({
     limit : "16kb"
 }))
 app.use(express.static("public"))
-app.use(cookieParser()) // can access bowser cookies from server and set it too  , securily 
-export default app
+app.use(cookieParser()) ;// can access bowser cookies from server and set it too  , securily
+
+//routes
+import userRouter from "./routes/user.routes.js"
+
+//routes declaration
+//we need to use middleware now cuz we cant use app.get
+app.use("/api/v1/users",userRouter);
+
+
+export {app}
